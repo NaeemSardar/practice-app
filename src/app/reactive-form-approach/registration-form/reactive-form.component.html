@@ -67,17 +67,21 @@
          
           </div>
           <div class="col mt-2">
+            <div>
             <label class="form-label fw-bolder">Province</label><br>  
             <div class="form-check form-check-inline" *ngFor="let pro of provinceArray; let i = index">
               <label class="checkbox-inline" >
               <input class="form-check-input" type="checkbox" formArrayName="province" [value]="pro" (change)="onChange($event)"> {{pro}}
             </label>
             </div>
+            <span class="text-danger" *ngIf=" submmited && Probool==false">Field is required!</span>
+          </div>
           </div>
           <div class="col mt-2">
             <label class="form-label fw-bolder">Address</label>
-            <input type="text" class="form-control" formControlName="txtaddress"> 
-            <!-- <span class="text-danger" *ngIf="txtaddress.touched && txtaddress.invalid">Selection is required!</span> -->
+            <input type="text" class="form-control" formControlName="txtaddress"
+            [ngClass]="{'is-invalid':submmited && f['txtaddress'].errors}"> 
+            <span class="text-danger" *ngIf="submmited && f['txtaddress'].errors">Field is required!</span>
             
           </div>
           
@@ -85,9 +89,17 @@
             <label class="form-label fw-bolder">Phone No</label>
             <input class="form-control" type="tel"
            
-            required  formControlName="txtnumber" maxlength="11"> 
+            required  formControlName="txtnumber" maxlength="11" [ngClass]="{'is-invalid':submmited && f['txtnumber'].errors}"> 
             <!-- <span class="text-danger" *ngIf="txtnumber.touched && txtnumber.invalid">Field is required!</span> -->
-            
+            @if (submmited && f['txtnumber'].errors) {
+              <div class="invalid-feedback">
+                @if (f['txtnumber'].errors['required']) {
+                <div>Field is required</div>
+                } @if (f['txtnumber'].errors['minlength']) {
+                <div>Your mobile number is at least 11 digits</div>
+                }
+              </div>
+              }
           </div>
 
           <div class="col mt-2 ">
@@ -106,13 +118,13 @@
               }
               <pre></pre>
               <!-- [ngClass]="{'is-invalid':submmited && f['txtemail'].errors}" -->
-            <input class="form-check-input" type="checkbox" formControlName="accept"> 
-             <label class="form-label fw-bolder">I accept the terms & conditions</label>
+            <input class="form-check-input me-1"  type="checkbox" formControlName="accept"> 
+             <label class="form-label fw-bolder"> I accept the terms & conditions</label>
           </div>
 
         </div>
         <pre></pre>
-    <button type="submit" class="btn btn-outline-primary">Submit</button> 
+    <button type="submit" class="btn btn-outline-primary" [disabled]="myForm.controls.accept.value==false">Submit</button> 
         <!-- <button type="submit" class="btn btn-outline-primary" [disabled]="!myForm.valid && (!(myForm.value.Punjab.touched || myForm.value.KPK.touched ||myForm.value.touched))" >Submit</button> -->
 
         <button type="button" class="btn btn-outline-primary ms-2"  (click)="resetForm()">Reset</button>

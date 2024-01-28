@@ -10,5 +10,9 @@
 
 
 <!-- <app-registration-form></app-registration-form> -->
-<app-reactive-form></app-reactive-form>
+<div ngxUiLoaderBlurred (blur)="6">
+  <!-- This page content will be blurred/frosted when foreground loader is showed -->
+  <app-reactive-form></app-reactive-form>
+</div>
+<ngx-ui-loader></ngx-ui-loader>
  <router-outlet></router-outlet>

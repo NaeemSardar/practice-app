@@ -8,7 +8,9 @@ import { FormGroup,FormControl,FormBuilder, NgForm, Validators, AbstractControl,
 export class ReactiveFormComponent{
  
   provinceArray: string[] = ['Punjab','Sind','KPK',];
-  
+  checkArray:FormArray|any;
+  Probool:boolean=false;
+   c:number = 0;
   constructor (private fb:FormBuilder){}
 
     myForm = this.fb.group({
@@ -24,13 +26,15 @@ export class ReactiveFormComponent{
       slcourse:['',Validators.required ],
       province:this.fb.array([]),
       txtaddress:['',Validators.required ],
-      txtnumber:['',Validators.required ],
+      txtnumber:['',[Validators.required,
+      Validators.minLength(11),
+  ] ],
      txtemail:['',
      [
       Validators.required,
       Validators.email ]
     ],
-    accept:['',Validators.requiredTrue ],
+    accept:[false,Validators.requiredTrue ],
     });
    
   submmited = false;
@@ -46,38 +50,52 @@ get f(): { [key: string]: AbstractControl } {
 
 onChange(e:any)
 {
-  console.log(e.target.value,e.target.checked)
-  const checkArray = this.myForm.get("province") as FormArray
+  
+  console.log(e.target.value,e.target.checked);
+  this.checkArray = this.myForm.get("province") as FormArray
   if (e.target.checked) 
   {
-    checkArray.push(new FormControl(e.target.value));
+    this.c++;
+    // this.Probool  = e.target.checked;
+    this.checkArray.push(new FormControl(e.target.value));
   } 
   else 
   {
+    
     let i: number = 0;
-    checkArray.controls.forEach((item) => {
+    this.checkArray.controls.forEach((item:any) => {
       if (item.value == e.target.value) {
-        checkArray.removeAt(i);
+       this.checkArray.removeAt(i);
+         this.c--;
         return;
       }
       i++;
     });
   }
+
+  if(this.c==1)
+    {
+      this.Probool = true;
+    }
+   if(this.c== 0)
+   {
+    this.Probool = false;
+   }
 }
 
 
 submitForm()
 {
   this.submmited = true;
-
-  if(this.myForm.invalid)
+  if(this.myForm.valid && this.Probool)
   {
     console.log(this.myForm.value)
     return;
   }
   else
   {
-    console.log(JSON.stringify(this.myForm.value));
+    // Convert the format into JSON format
+    // console.log(JSON.stringify(this.myForm.value));
   }
   // this.firstname =  this.myForm.get('txtfirstname')?.value;
   // console.log(form.controls.txtfirstname.value);
