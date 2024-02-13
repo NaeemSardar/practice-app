@@ -3,8 +3,6 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationFormComponent } from './template-driven-form/registration-form/registration-form.component';
-import { ReactiveFormComponent } from './reactive-form-approach/registration-form/reactive-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   NgxUiLoaderModule,
@@ -14,6 +12,17 @@ import {
   PB_DIRECTION,
   NgxUiLoaderRouterModule,
 } from "ngx-ui-loader";
+// import { HeaderComponent } from './header-old/header-old.component';
+import { HeaderComponent } from './header/header.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form.component';
+import { TemplateFormComponent } from './forms/template-form/template-form.component';
+import { TopMenuComponent } from './header/top-menu/top-menu.component';
+import { MainMenuComponent } from './header/main-menu/main-menu.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { SearchComponent } from './product-list/search/search.component';
+import { TopHeaderComponent } from './top-header/top-header.component';
+
+
 // export function loadCrucialData() {
 //   return function () {
 //     // or use UserService
@@ -29,16 +38,16 @@ import {
 //   };
 // }
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
-  bgsColor: "#35155D",
+  bgsColor: "#E3A048",
   bgsPosition: POSITION.bottomRight,
   bgsSize: 40,
-  fgsColor:"#5B3B83",
-  pbColor:"#5B3B83",
+  fgsColor:"#E3A048",
+  pbColor:"#E3A048",
   bgsType: SPINNER.rectangleBounce, // background spinner type
   fgsType: SPINNER.threeBounce, // foreground spinner type
 //  fgsTemplate:SPINNER.doubleBounce,
   pbDirection: PB_DIRECTION.leftToRight, // progress bar direction
-  pbThickness: 5, // progress bar thickness
+  pbThickness: 8, // progress bar thickness
   text:"Please wait...",
   //textColor:"#5B3B83",
   logoSize:(20),
@@ -47,8 +56,15 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationFormComponent,
-    ReactiveFormComponent
+    HeaderComponent,
+    ReactiveFormComponent,
+    TemplateFormComponent,
+    HeaderComponent,
+    TopHeaderComponent,
+    TopMenuComponent,
+    MainMenuComponent,
+    ProductListComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +72,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     ReactiveFormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
-    NgxUiLoaderRouterModule
+    NgxUiLoaderRouterModule,
    
   ],
   providers: [
@@ -70,4 +86,5 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

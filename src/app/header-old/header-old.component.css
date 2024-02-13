@@ -1,0 +1,17 @@
+.app-header
+{
+    font-family: Courier, monospace;
+    background-color: #E3A048;
+    color: white;
+    border-radius: 6px;
+}
+.nav-link
+{
+    color: #E3A048;
+    font-family: Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+}
+.nav-link:hover{
+    color:black;
+}

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormGroup,FormControl,FormBuilder, NgForm, Validators, AbstractControl, FormArray} from '@angular/forms';
+
 @Component({
   selector: 'app-reactive-form',
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.css'
 })
+
 export class ReactiveFormComponent{
  
   provinceArray: string[] = ['Punjab','Sind','KPK',];
@@ -77,10 +79,9 @@ onChange(e:any)
     {
       this.Probool = true;
     }
-   if(this.c== 0)
-   {
-    this.Probool = false;
-   }
+    else{
+      this.Probool = false;
+    }
 }
 
 

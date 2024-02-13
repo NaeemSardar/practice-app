@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg"  style="background-color: #DADADA;">
+    <div class="container-fluid">
+       
+        <h1 class="app-header fw-bold"><a style="color: white; text-decoration: none;" [routerLink]="['']">Practice App </a></h1>
+     <!-- <h1 class="navbar-brand" style="color: #E3A048;">Practice App</h1>  -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="nav-bar-item">
+        <ul class="navbar-nav  ms-auto mb-2 mb-lg-0 navbar-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Forms
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/template-form']">Template driven form</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/reactive-form']" >Reactive form</a></li>
+            </ul>
+          </li>
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              List
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/student/student-details']">Student</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/reactive-form']" >Teacher</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">About-us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Contact-us</a>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> -->
+      </div>
+    </div>
+  </nav>
